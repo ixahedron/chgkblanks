@@ -1,0 +1,26 @@
+\begin{picture}(8.5,11)(0.0,0.3937) % revised for 5 vertical per page
+  \multiput(0,0)(4.15,0.0){2}{ % horizontal (x) motion
+     \multiput(0.25,-0.05)(0.0,2.3){\verticalcards}{ % vertical (y) motion
+        %\framebox(3.7,2){ % x,y size of box, inches
+           %\shortstack[l]{
+           
+           %\includegraphics*{untitled__2_.pdf}
+           \begin{minipage}[c][60mm]{87mm} \input{cardBlankQuestionNumber.tex} \end{minipage}
+           \raisebox{-22mm} {\hspace{-109mm}\rule{\textwidth}{1pt}}
+           \stepcounter{questions}
+           
+           
+           \ifnum \value{questions} > 10
+           		\stepcounter{teams}
+                \stepcounter{questions}
+           \fi
+           
+           
+          % } % end shortstack
+        %} % end makebox
+     } % end multiput
+     
+  } % end multiput
+  \hspace{-2mm}\textcolor{white}{\rule[-68pt]{235mm}{3pt}}\\
+  \hspace{-127mm}\rule[-27mm]{1pt}{\textheight}
+\end{picture}

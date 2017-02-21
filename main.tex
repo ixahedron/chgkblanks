@@ -1,0 +1,54 @@
+\documentclass[9pt,a4paper]{memoir}
+\newcommand{\verticalcards}{5}
+\textwidth 21.00cm % 21.59cm
+\textheight 29.70cm
+\topmargin -1.75in % was -1.0
+
+\headheight 0in
+\headsep 0in
+\oddsidemargin -1in % ok fits A4 paper
+\evensidemargin -1in % ok fits A4 paper
+
+\def \totalBlanksPerTeam {70}
+%those two must be off-by-one to be checked correctly
+%('cause native latex can't into normal comparisons)
+%so use 37 if you want blanks for 36 teams for example
+\def \numberedBlanksPerTeam {61}
+\def \totalTeams {42}
+
+\newcommand{\cardspage}{\input{singlepage.tex}}
+\newcommand{\cardspageNoQ}{\input{singlePageBlankQuestionNumbers.tex}}
+
+\newcommand{\whichCard}[1]
+{
+  \ifnum #1 < \numberedBlanksPerTeam
+    \input{card.tex}
+  \else
+    \input{cardBlankQuestionNumber.tex}
+  \fi
+}
+
+\usepackage{tikz}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{graphics}
+
+\usepackage[code=Code39, X=0.3mm, H=0.7cm]{makebarcode}
+
+\pagestyle{empty} % removes page numbers
+
+\begin{document}
+\newcounter{teams}
+\stepcounter{teams}
+\newcounter{questions}[teams]
+\stepcounter{questions}
+\noindent
+\setlength{\unitlength}{1in}
+\loop
+	\cardspage
+    \ifnum \value{teams} < \totalTeams
+\repeat
+
+\end{document}
