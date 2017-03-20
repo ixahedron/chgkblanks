@@ -9,19 +9,15 @@
 \oddsidemargin -1in % ok fits A4 paper
 \evensidemargin -1in % ok fits A4 paper
 
-\def \totalBlanksPerTeam {70}
-%those two must be off-by-one to be checked correctly
-%('cause native latex can't into normal comparisons)
-%so use 37 if you want blanks for 36 teams for example
-\def \numberedBlanksPerTeam {61}
-\def \totalTeams {42}
+% edit this for logo, number of teams, blanks etc
+\input{config.tex}
 
 \newcommand{\cardspage}{\input{singlepage.tex}}
 \newcommand{\cardspageNoQ}{\input{singlePageBlankQuestionNumbers.tex}}
 
 \newcommand{\whichCard}[1]
 {
-  \ifnum #1 < \numberedBlanksPerTeam
+  \ifnum #1 < \numexpr \numberedBlanksPerTeam+1 \relax
     \input{card.tex}
   \else
     \input{cardBlankQuestionNumber.tex}
@@ -48,7 +44,7 @@
 \setlength{\unitlength}{1in}
 \loop
 	\cardspage
-    \ifnum \value{teams} < \totalTeams
+    \ifnum \value{teams} < \numexpr \totalTeams+1 \relax
 \repeat
 
 \end{document}
