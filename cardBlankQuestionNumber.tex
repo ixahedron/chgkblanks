@@ -1,25 +1,12 @@
-% \documentclass[9pt,a4paper]{memoir}
-
-%\setstocksize{60mm}{105mm} % UK Stock size
-% \setpagecc{60mm}{105mm}{*}
-% \settypeblocksize{50mm}{87mm}{*}
-% \setulmargins{5mm}{*}{*}
-% \setlrmargins{6mm}{*}{*}
-
-
-% \setheadfoot{0.1pt}{0.1pt}
-% \setheaderspaces{1pt}{*}{*}
-
-% \checkandfixthelayout[fixed]
-
-% \pagestyle{empty}
-
-% \begin{document}
+\def \iflogo {true}
     
     \noindent
     \textbf{Команда \theteams} \hfill \textbf{Вопрос №}
     \vfill
-    \hspace{1mm}\includegraphics[scale=0.055]{\logo}
+    \ifx\iflogo\useLogo
+      {\hspace{-2mm}\includegraphics[width=1cm]{\logo}}
+    \else \ 
+    \fi
     \newline \newline \newline
     
-% \end{document}
+
