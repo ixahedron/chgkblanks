@@ -1,8 +1,17 @@
-\def \totalBlanksPerTeam {50}
+\def \verticalcards {6}
+
+\def \totalBlanksPerTeam {51}
 \def \numberedBlanksPerTeam {48}
 \def \totalTeams {3}
 
-\def \logo {HaskellLogo.png}
+%probably covers the majority of cases
+\ifnum \numexpr \verticalcards*2 \relax > \totalTeams
+    \def \teamsPerRun {\totalTeams}
+\else
+    \def \teamsPerRun {\numexpr \verticalcards*2 \relax}
+\fi
+
+\def \logo {riga.png}
 
 %use true or false values here
 \def \useBarcode {false}

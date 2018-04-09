@@ -3,15 +3,15 @@
 
 
     \noindent
-    \textbf{Команда \theteams}
+    \hspace{-2mm}\textbf{Команда {\LARGE\theteams}}
     \ifx\ifbarc\useBarcode
       {\hfill \raisebox{-0.4cm}{\barcode{\the\numexpr\theteams*1000+\thequestions\relax}}  \hfill}
     \else \hfill
     \fi
-    \textbf{Вопрос №\thequestions}
+    \textbf{Вопрос №{\LARGE\thequestions}}
     \vfill
     \ifx\iflogo\useLogo
-      {\hspace{-2mm}\includegraphics[width=1cm]{\logo}}
+      {\hspace{-3mm}\includegraphics[height=1cm]{\logo}}
     \else \ 
     \fi
     \newline \newline \newline

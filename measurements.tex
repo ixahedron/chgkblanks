@@ -1,0 +1,53 @@
+% in most cases you don't need to touch this
+
+% these are various measurements empirically deemed working
+% I've just been changing stuff and seeing what happens though, so they may be off somewhat
+
+\textwidth 21.00cm % 21.59cm
+\textheight 29.70cm
+\topmargin -1.75in % was -1.0
+
+\headheight 0in
+\headsep 0in
+\oddsidemargin -1in % ok fits A4 paper
+\evensidemargin -1in % ok fits A4 paper
+
+\def \cpagetopmargin {
+\ifnum \verticalcards = 6
+    0.65
+\else
+    0.3937
+\fi
+}
+
+\def \cardtopmargin {
+\ifnum \verticalcards = 6
+    1.93
+\else
+    2.3
+\fi
+}
+
+\def \cardheight {
+\ifnum \verticalcards = 6
+    53mm
+\else
+    57mm
+\fi
+}
+
+\def \hruleraise {
+\ifnum \verticalcards = 6
+    -19mm
+\else
+    -22mm
+\fi
+}
+
+\def \vruleraise {
+\ifnum \verticalcards = 6
+    -20mm
+\else
+    -27mm
+\fi
+}

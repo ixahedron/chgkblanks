@@ -1,16 +1,14 @@
 \documentclass[9pt,a4paper]{memoir}
-\newcommand{\verticalcards}{5}
-\textwidth 21.00cm % 21.59cm
-\textheight 29.70cm
-\topmargin -1.75in % was -1.0
 
-\headheight 0in
-\headsep 0in
-\oddsidemargin -1in % ok fits A4 paper
-\evensidemargin -1in % ok fits A4 paper
-
+%-------------
 % edit this for logo, number of teams, blanks etc
 \input{config.tex}
+%-------------
+
+%-------------
+% don't touch this if you don't know what you're doing
+\input{measurements.tex}
+%-------------
 
 \newcommand{\cardspage}{\input{singlepage.tex}}
 \newcommand{\cardspageNoQ}{\input{singlePageBlankQuestionNumbers.tex}}
@@ -36,15 +34,23 @@
 \pagestyle{empty} % removes page numbers
 
 \begin{document}
-\newcounter{teams}
-\stepcounter{teams}
-\newcounter{questions}[teams]
+\newcounter{run}
+\stepcounter{run}
+\newcounter{questions}[run]
 \stepcounter{questions}
+\newcounter{teams}[questions]
+\stepcounter{teams}
 \noindent
 \setlength{\unitlength}{1in}
 \loop
-	\cardspage
-    \ifnum \value{teams} < \numexpr \totalTeams+1 \relax
+    {\loop
+	    \cardspage
+        \ifnum \value{questions} < \numexpr \totalBlanksPerTeam+1 \relax
+    \repeat}
+    \stepcounter{run}
+    \stepcounter{questions}
+    \setcounter{teams}{\numexpr ((\value{run}-1)*\teamsPerRun)+1 \relax}
+    \ifnum \value{run} < \numexpr (\totalTeams / \teamsPerRun)+1 \relax
 \repeat
 
 \end{document}
